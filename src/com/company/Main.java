@@ -21,13 +21,13 @@ public class Main {
         int sum = getTotalPrice(books);
         System.out.println("Tổng số tiền của 10 cuốn sách là: " + sum);
 
-        int count = countBookLanguage(books, "java");
+        int count = countBookByLanguage(books, "java");
         System.out.println("Số sách Programming có ngôn ngữ Java là: " + count);
 
-        int count1 = countBookPrice(books);
+        int count1 = countBookByPrice(books,100);
         System.out.println("Số sách Fiction có giá < 100 là: " + count1);
 
-        int count2 = countBookCategory(books,"Vien tuong 1");
+        int count2 = countBookByCategory(books,"Vien tuong 1");
         System.out.println("Số sách Fiction có category 'Vien tuong 1' là: " + count2);
 
         Scanner scanner = new Scanner(System.in);
@@ -42,7 +42,7 @@ public class Main {
         }
         return sum;
     }
-    public static int countBookLanguage(Book[] books, String language){
+    public static int countBookByLanguage(Book[] books, String language){
         int count = 0;
         for (int i = 0; i < books.length; i++) {
 
@@ -53,18 +53,18 @@ public class Main {
         }
         return count;
     }
-    public static int countBookPrice(Book[] books){
+    public static int countBookByPrice(Book[] books, int price){
         int count = 0;
         for (int i = 0; i < books.length; i++) {
 
             if (books[i] instanceof FictionBook){
-                if (books[i].getPrice() < 100)
+                if (books[i].getPrice() < price)
                     count ++;
             }
         }
         return count;
     }
-    public static int countBookCategory(Book[] books, String category){
+    public static int countBookByCategory(Book[] books, String category){
         int count = 0;
         for (int i = 0; i < books.length; i++) {
 
